@@ -27,8 +27,8 @@ Uitgaand netwerkverkeer kan worden beperkt tot een configureerbare allowlist.
 Dit voorkomt dat de agent tijdens de uitvoering onverwachte externe calls maakt.
 
 ### Auditspoor
-Elke actie van de agent — bestandslezingen, schrijfacties, shell-commando's,
-tool calls — wordt gelogd en beschikbaar gesteld in het observability dashboard.
+Elke actie van de agent: bestandslezingen, schrijfacties, shell-commando's en 
+tool calls wordt gelogd en beschikbaar gesteld in het observability dashboard.
 
 ## Implementatie
 

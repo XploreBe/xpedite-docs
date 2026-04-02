@@ -14,7 +14,7 @@ opstart.
 | Java | 21+ | Backend runtime |
 | Gradle of Maven | Laatste stabiele versie | Build tooling |
 | Docker | 24+ | Sandbox-uitvoering |
-| Node.js | 18+ | Observability dashboard |
+
 
 ## Aanbevolen
 
