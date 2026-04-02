@@ -51,12 +51,12 @@ export default function Home(): ReactNode {
                             <Feature
                                 emoji="🛡️"
                                 title="Afgedwongen kwaliteitsstandaarden"
-                                description="Hooks en skills die automatisch Checkstyle, PMD, JaCoCo en OpenRewrite toepassen — zodat de AI-output aan dezelfde lat voldoet als elke menselijke contributor."
+                                description="Hooks en skills die automatisch Checkstyle, PMD, JaCoCo en OpenRewrite toepassen zodat de AI-output aan dezelfde lat voldoet als elke menselijke contributor."
                             />
                             <Feature
                                 emoji="🔒"
                                 title="Veilige, onbeheerde uitvoering"
-                                description="Een sandboxinglaag met resourcelimieten en guardrails. Dien een taak in en loop gerust weg — Xpedite houdt de controle."
+                                description="Een sandboxinglaag met resourcelimieten en guardrails. Dien een taak in en loop gerust weg, Xpedite houdt de controle."
                             />
                             <Feature
                                 emoji="📊"
