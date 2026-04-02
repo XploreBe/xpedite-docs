@@ -61,7 +61,7 @@ const config: Config = {
       title: 'Xpedite',
       logo: {
         alt: 'Xpedite Logo',
-        src: 'img/logo.svg',
+        src: 'img/logo.png',
       },
       items: [
         {
