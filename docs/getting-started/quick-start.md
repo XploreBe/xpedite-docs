@@ -50,3 +50,8 @@ configuratiebestand:
 Open het dashboard en maak een nieuwe agentsessie aan. Geef het pad naar je
 Java-project op en selecteer een taak. Xpedite past kwaliteitshooks
 automatisch toe voordat wijzigingen worden doorgevoerd.
+
+## Volgende stappen
+
+- Bekijk [Configuratie en secrets](./configuration) voor alle benodigde variabelen.
+- Bekijk [Issue import (JSON)](../features/issue-import) voor importformaat van issue backlog.
