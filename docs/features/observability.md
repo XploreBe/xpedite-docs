@@ -1,5 +1,5 @@
 ---
-sidebar_position: 3
+sidebar_position: 4
 ---
 
 # Volledige observability
@@ -51,6 +51,6 @@ statistieken, als referentie voor toekomstige runs en gedragsoptimalisatie.
 
 ## Technologie
 
-Het Xpedite dashboard wordt gebouwd met **React** en **Java spring boot**, en
-communiceert met de Spring Boot backend via een streaming API. Events worden
-in realtime gepusht via Server-Sent Events (SSE).
+Het Xpedite dashboard wordt gebouwd met **React** en **Spring Boot**, en
+communiceert met de backend via een streaming API. Events worden in realtime
+gepusht via Server-Sent Events (SSE).
