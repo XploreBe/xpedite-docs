@@ -5,14 +5,14 @@ slug: /
 
 # Wat is Xpedite?
 
-AI coding assistants zijn krachtig maar ze produceren standaard code die niet
+AI coding assistants zijn krachtig, maar ze produceren standaard code die niet
 voldoet aan de standaarden van jouw team. Ze slaan statische analyse over,
 negeren coverage-drempelwaarden, vergeten build-plugins te configureren en
 leveren output die nooit een pull-request review zou doorstaan. Ze onbeheerd
 laten draaien is riskant: er is geen sandbox, geen auditspoor en geen manier
 om te zien wat ze aan het doen zijn.
 
-in dit **Xpedite** project configureren wij een opinionated AI Coding Assistant die niet zomaar code schrijft
+**Xpedite** is een opinionated AI Coding Assistant die niet zomaar code schrijft
 hij schrijft code zoals jouw team dat verwacht. Gebouwd bovenop
 [OpenCode](https://opencode.ai), voegt Xpedite drie dingen toe die ontbreken bij
 algemene coding agents:
@@ -21,7 +21,7 @@ algemene coding agents:
 
 ### 🛡️ Afgedwongen kwaliteitsstandaarden
 Een bibliotheek van hooks en skills die automatisch de coding best practices van
-jouw team toepassen: Checkstyle, PMD, JaCoCo, compiler strictness en OpenRewrite 
+jouw team toepassen: Checkstyle, PMD, JaCoCo, compiler strictness en OpenRewrite
 zodat de output van de AI aan dezelfde lat voldoet als die van elke menselijke
 contributor.
 
