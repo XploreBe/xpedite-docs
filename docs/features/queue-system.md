@@ -1,5 +1,5 @@
 ---
-sidebar_position: 6
+sidebar_position: 3
 ---
 
 # Queue-gebaseerde uitvoering
@@ -62,3 +62,21 @@ als een geordende lijst van groepen:
 De backend verwerkt de groepen sequentieel. Binnen elke groep worden de
 agentruns parallel gestart via virtual threads. De bestaande agent-uitvoerlogica
 (ook gebruikt door het individuele issue board) wordt hergebruikt.
+
+### Branch- en checkpointstrategie
+
+Voor elke agentrun maakt Xpedite een feature branch aan op basis van het
+issuenummer: `xpedite/issue-{number}`. Na elke voltooide groep worden de
+parallelle branches samengevoegd in een checkpoint-branch:
+`xpedite/queue-{queueId}-checkpoint-{groupIndex}`. De volgende groep bouwt
+voort op dit checkpoint als base branch, zodat latere issues beschikken over
+de output van eerdere groepen.
+
+## Agent-commit gedrag
+
+De agent mag tijdens een run geen `git add`, `git commit` of `git push`
+uitvoeren. Versiebeheer wordt volledig afgehandeld door het entrypoint-script
+na afloop van de agentrun. Dit wordt zowel afgedwongen via de agent-prompt als
+gedetecteerd door het script: als de agent toch rechtstreeks commits heeft
+gemaakt, herkent het script dit via het aantal commits ahead van de base branch
+en slaat het de eigen commit-stap over.

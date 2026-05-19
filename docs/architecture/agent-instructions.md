@@ -1,5 +1,5 @@
 ---
-sidebar_position: 3
+sidebar_position: 2
 ---
 
 # Agent-instructies
@@ -13,11 +13,11 @@ geeft elke agentrun een vaste set instructies mee die dit gedrag beperken.
 
 De instructies worden op twee niveaus meegegeven:
 
-**Statisch via `opencode.jsonc`** het `instructions`-veld in de
+**Statisch via `opencode.jsonc`** — het `instructions`-veld in de
 OpenCode-configuratie bevat richtlijnen die gelden voor elke sessie,
 ongeacht de taak.
 
-**Dynamisch via `entrypoint.sh`** bij elke agentrun wordt een `PROMPT_PREFIX`
+**Dynamisch via `entrypoint.sh`** — bij elke agentrun wordt een `PROMPT_PREFIX`
 samengesteld die wordt samengevoegd met de issuebeschrijving voordat die naar
 de agent wordt gestuurd. Zo kan de prefix in de toekomst worden uitgebreid met
 context die pas bekend is op het moment van uitvoering (bijv. de taal van het
@@ -27,7 +27,7 @@ issue-label).
 
 ### Outputtaal
 
-Alle output van de agent: code, inline comments, commit messages, wordt in het
+Alle output van de agent — code, inline comments, commit messages — wordt in het
 Engels geschreven, ongeacht de taal van het ingediende issue.
 
 ### Tech stack
@@ -44,12 +44,19 @@ toepast:
 
 ### Architectuurregels
 
-Twee architectuurregels worden als non-negotiable meegegeven:
+De volgende architectuurregels worden als non-negotiable meegegeven:
 
 - **Feature-gebaseerde packagestructuur** — packages worden georganiseerd per
   feature, niet per laag (`controller/`, `service/`, `repository/`).
 - **Domain-Driven Design** — services retourneren domeinmodellen, geen DTO's.
   Controllers zijn verantwoordelijk voor de conversie.
+- **Ports & Adapters** — de agent mag geen infrastructure-imports introduceren
+  in domein- of applicatie-packages. Concreet betekent dit: geen docker-java,
+  geen GitHub-specifieke klassen en geen JPA-annotaties in `domain/`- of
+  `application/`-packages. Infrastructuurkeuzes horen thuis in de adapter-laag.
+- **Versiebeheer is verboden voor de agent** — de agent mag geen `git add`,
+  `git commit` of `git push` uitvoeren. Dat wordt volledig afgehandeld door
+  het entrypoint-script na afloop van de run.
 
 ## Uitbreidbaarheid
 

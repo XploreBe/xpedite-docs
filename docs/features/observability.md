@@ -6,14 +6,24 @@ sidebar_position: 4
 
 Wanneer een AI-agent autonoom werkt aan je codebase, moet je precies weten wat
 hij doet, in realtime. Xpedite biedt volledige zichtbaarheid in elke
-draaiende agentsessie, zowel via de ingebouwde interface van OpenCode als via
-het eigen Xpedite-dashboard dat momenteel in ontwikkeling is.
+draaiende agentsessie via het eigen dashboard en via de ingebouwde interface
+van OpenCode.
 
-## Huidig: observability via OpenCode
+## Live logstreaming
 
-In de huidige fase verloopt de observability primair via **OpenCode**, het
-onderliggende agent-framework waarop Xpedite is gebouwd. OpenCode biedt
-out-of-the-box inzicht in wat de agent doet:
+Agentoutput, tool calls en redeneersstappen worden gestreamt via
+**Server-Sent Events (SSE)** terwijl ze plaatsvinden, zonder te wachten tot
+een sessie klaar is. De frontend verbindt zich met de SSE-stream van de backend
+en toont logs in realtime in de queue- en issuepagina's.
+
+Elke issue-kaart in de queue builder heeft een logknop die actief wordt zodra
+de bijbehorende agentrun gestart is. Zo kun je meerdere parallelle runs
+tegelijk volgen zonder tussen schermen te wisselen.
+
+## Observability via OpenCode
+
+Xpedite is gebouwd bovenop **OpenCode**, het onderliggende agent-framework.
+OpenCode biedt aanvullend inzicht in wat de agent doet:
 
 - **Live tool calls** — je ziet in realtime welke acties de agent uitvoert:
   bestanden lezen, schrijven, shell-commando's uitvoeren
@@ -24,33 +34,24 @@ out-of-the-box inzicht in wat de agent doet:
 - **Diff-weergave** — bestandswijzigingen zijn zichtbaar voordat ze worden
   doorgevoerd
 
-## Toekomst: Xpedite observability dashboard
+## Infrastructuurmonitoring
 
-Naast de OpenCode-interface werkt Xpedite aan een eigen realtime dashboard
-dat dieper inzicht biedt in agentsessies, specifiek afgestemd op
-Java-projecten en teamgebruik:
+Naast de agent-observability biedt Xpedite realtime inzicht in de
+gezondheid van de LLM-inferentieserver. Zie [Monitoring](./monitoring) voor
+het Grafana-dashboard met beschikbaarheid, systeemresources en
+inferentieprestaties.
 
-### Live logstreaming
-Agentoutput, tool calls en redeneersstappen worden gestreamt terwijl ze
-plaatsvinden, zonder te wachten tot een sessie klaar is.
+## Gepland
 
-### Diff-viewer
-Elke bestandswijziging die de agent klaarzet wordt getoond als diff voordat
-hij wordt toegepast. Individuele wijzigingen kunnen worden gereviewd,
-goedgekeurd of afgewezen zonder de sessie te onderbreken.
+De volgende observability-features zijn voorzien voor komende sprints:
 
-### Kostenbewaking
-Tokengebruik en kosten worden per sessie bijgehouden en over tijd
-geaggregeerd. Bij gebruik van een lokaal model (zoals Nemotron op de DGX
-Spark) zijn de API-kosten nul, de bewaking richt zich dan op
-resourcegebruik en uitvoeringstijd.
-
-### Sessiegeschiedenis
-Voltooide sessies worden opgeslagen met hun volledige logs, diffs en
-statistieken, als referentie voor toekomstige runs en gedragsoptimalisatie.
+- **Diff-viewer** — elke bestandswijziging die de agent klaarzet getoond als
+  diff, met de mogelijkheid individuele wijzigingen te reviewen of af te wijzen
+- **Sessiegeschiedenis** — voltooide sessies opgeslagen met hun volledige logs,
+  diffs en statistieken als referentie voor toekomstige runs
 
 ## Technologie
 
-Het Xpedite dashboard wordt gebouwd met **React** en **Spring Boot**, en
+Het Xpedite dashboard is gebouwd met **React** en **Spring Boot**, en
 communiceert met de backend via een streaming API. Events worden in realtime
 gepusht via Server-Sent Events (SSE).
